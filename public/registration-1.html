@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration location</title>
+    <link rel="stylesheet" media="screen" href="bootstrap3.css" />
+</head>
+<body>
+    <div id="loc-info"></div>
+    <div class="container">
+        <header>
+            <h1>Input your location</h1>
+        </header>
+        <form action="/registerloc" role="form" style="margin-bottom: 20px;" method="POST">
+            <fieldset>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="countrycode">Country Code</label>
+                            <input type="text" class="form-control" id="countrycode" name="countrycode" placeholder="US" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="messages" class="col-sm-12"></div>
+                </div>
+                <button type ="submit">Next</button>
+            </fieldset>
+        </form>
+        <br><br>
+        <p><a href="..">Go back</a></p>
+    </div>
+</body>
+</html>

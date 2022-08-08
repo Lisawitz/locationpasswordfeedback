@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" media="screen" href="bootstrap3.css" />
+</head>
+<body>
+    <div id="loc-info"></div>
+    <div class="container">
+        <header>
+            <h1>Register an Account</h1>
+        </header>
+        <form action="/register" role="form" style="margin-bottom: 20px;" method="POST">
+            <fieldset>
+                <div class="row" id="pwd-container">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-sm-offset-2 my-help-text">
+                        <span class="pwstrength_viewport_progress"></span> 
+                        <span class="pwstrength_viewport_verdict" id="pwstrength_viewport_verdict"></span>
+                    </div>
+                    <div class="col-sm-6 col-sm-offset-2 my-help-text">
+                        <span class="spantest" name="percentile" id="percentile"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="messages" class="col-sm-12"></div>
+                </div>
+                <button type ="submit">Submit</button>
+            </fieldset>
+            <input type="hidden" name="verdict" id="verdict" value=""/>
+            <input type="hidden" name="city" id="city" value=""/>
+            <input type="hidden" name="countrycode" id="countrycode" value=""/>
+        </form>
+        <br><br>
+        <p><a href="./registration-1.html">Go back</a></p>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../zxcvbn.js"></script>
+    <script type="text/javascript" src="../pwstrength.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            "use strict";
+            var options = {};
+            options.ui = {
+                bootstrap3: true,
+                container: "#pwd-container",
+                viewports: {
+                    progress: ".pwstrength_viewport_progress",
+                    verdict: ".pwstrength_viewport_verdict"
+                }
+            };
+            options.common = {
+                onKeyUp: function (evt, data) {
+                    $('input[name="verdict"]').val(data.score);
+                    $('input[name="percentile"]').val("A");
+                }
+            }
+            $(':password').pwstrength(options);
+        });
+    </script>
+</body>
+</html>
